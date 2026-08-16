@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -51,13 +49,14 @@ public class Main {
         System.out.println("Enter the count of numbers ");
         int countNum =scanner.nextInt();
         int sumen =0;
-        int avrg =0;
-        while(countNum != -1 ){
+        int ii =0;
+        while (ii < countNum) {
             System.out.println("Enter an integer");
             int en = scanner.nextInt();
-            sumen = en + en;
-            avrg = sumen / countNum;
+            sumen += en;
+            ii++;
         }
+        double avrg = (double)sumen / countNum;
         System.out.println("the avreg is " + avrg );
 
         System.out.println("---------------------------------------------------------------------------------");
@@ -150,12 +149,13 @@ public class Main {
         System.out.println("---------------------------------------------------------------------------------");
 
         //Question 12
-        System.out.println("Enter an integer ");
-        int hms = scanner.nextInt();
-        int hours = hms / 24;
-        int minetus = hours / 60;
-        int seconds = minetus / 60;
-        System.out.println(hours + ":" + minetus + ":" + seconds);
+        System.out.println("Enter seconds:");
+        int totalSeconds = scanner.nextInt();
+
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        int seconds = totalSeconds % 60;
+        System.out.println(hours + ":" + minutes + ":" + seconds);
 
         System.out.println("---------------------------------------------------------------------------------");
 
@@ -226,20 +226,32 @@ public class Main {
 
         //Question 17
         System.out.println("Enter numbers and enter -1 to stop");
-        int largestNumber =0;
-        int smallestNumber=0;
-        do{
-            System.out.println("Enter the number");
-            int innum = scanner.nextInt();
-            if( innum > largestNumber){
-                largestNumber = innum;
-            }
-            if( innum < smallestNumber){
-                smallestNumber = innum;
-            }
-        }while (intnum != -1);
-        System.out.println("the largest number :"+largestNumber);
-        System.out.println("the smallest number :"+smallestNumber);
+
+        int largestNumber ;
+        int smallestNumber ;
+        boolean firstNumber = true;
+        int innum;
+        do {
+            System.out.println("Enter the number:");
+            innum = scanner.nextInt();
+            largestNumber = intnum;
+            smallestNumber = intnum;
+            if (innum != -1) {
+                if (firstNumber) {
+                    largestNumber = innum;
+                    smallestNumber = innum;
+                    firstNumber = false;
+                } else {
+                    if (innum > largestNumber) {
+                        largestNumber = innum;
+                    }
+                    if (innum < smallestNumber) {
+                        smallestNumber = innum;
+                    } } }
+        } while (innum != -1);
+        System.out.println("The largest number: " + largestNumber);
+        System.out.println("The smallest number: " + smallestNumber);
+
 
         System.out.println("---------------------------------------------------------------------------------");
 
